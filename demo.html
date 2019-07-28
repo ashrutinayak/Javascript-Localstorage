@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Local stroge</title>
+</head>
+<body>
+	<fieldset>
+		<legend>Insert Data</legend>
+		<input type="text" id="inputkey" placeholder="Enter key" name="">
+		<input type="text" id="inputkeyvalue" placeholder="Enter values" name="">
+		<button id="btninsert" type="button">Insert Data</button>
+	</fieldset>
+	<fieldset>
+		<legend>Local Stroge</legend>
+		<div id="dataget"></div>
+	</fieldset>
+</body>
+<script type="text/javascript">
+	const inputkey=document.getElementById('inputkey');
+	const inputkeyvalue=document.getElementById('inputkeyvalue');
+	const btninsert=document.getElementById('btninsert');
+	const dataget=document.getElementById('dataget');
+	btninsert.onclick = function(){
+		const key =inputkey.value;
+		const value =inputkeyvalue.value;
+		console.log(key);
+		console.log(value);
+		if (key && value) 
+		{
+			localStorage.setItem(key, value);
+			location.reload();
+		}
+	};
+	for (let i = 0; i < localStorage.length; i++) {
+		const key = localStorage.key(i);
+		const value = localStorage.getItem(key);
+		dataget.innerHTML += `${key}: ${value}`;
+	}
+</script>
+</html>
